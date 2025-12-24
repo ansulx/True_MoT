@@ -8,6 +8,7 @@ import pandas as pd
 import time
 import requests
 import json
+import os
 from typing import Dict, Any
 import logging
 
@@ -376,9 +377,11 @@ def main():
         st.markdown("### ⚙️ Configuration")
         
         # API Key input
+        # Check if API key is set in environment variable
+        default_key = os.getenv('GOOGLE_AI_API_KEY', '')
         api_key = st.text_input(
             "Google AI API Key",
-            value="AIzaSyCw9khh0SvbDHdn-j5G0rs6DIqwy9cnlq4",
+            value=default_key,
             type="password",
             help="Enter your Google AI API key for natural language reasoning",
             key="api_key_input"
